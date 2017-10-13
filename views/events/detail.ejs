@@ -16,27 +16,24 @@
         <span><%= s_date%></span>  <span><%= end_date%></span>   
         <div><%= adress%></div>
         <div><%= eventDescription%></div>
-
-
-	'wilaya' : String,
-	'needs' : Array,
-	'participent' : [{
-	 	type: Schema.Types.ObjectId,
-	 	ref: 'pending'
-	}],
-	'pendingParticipents' : [{
-	 	type: Schema.Types.ObjectId,
-	 	ref: 'pending'
-	}]
     </div>
+
     <div class="col-sm-5">
         <div id="map"><%= place_map%></div>
         <div><%= wilaya%></div>
-        <% %>
-            
-        <% %>
-        <div><%= needs%></div>
+        <ul>
+            <% needs.forEach(function(need){ %>
+                <li><%= need %></li>
+            <% }); %>
+        </ul>
+        </br>
+        <ul>
+            <% participent.forEach(function(participe){ %>
+                <li><%= need %></li>
+            <% }); %>
+        </ul>
     </div>
+
 
 </div>
 </body>
