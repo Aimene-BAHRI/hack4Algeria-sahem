@@ -53,6 +53,40 @@ module.exports = {
         });
     },
 
+
+    /**
+     * EventController.showDetails()
+     */
+        showDetails : function (req, res){
+            var id = req.params.id;
+        EventModel.findOne({_id: id}, function (err, Event) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error when getting Event.',
+                    error: err
+                });
+            }
+            if (!Event) {
+                return res.status(404).json({
+                    message: 'No such Event'
+                });
+            }
+            res.render("detail", {
+                title: 'EventDetail',
+                username: Session.username,
+                id: Session._id,
+                company:Session.company,
+                name: Event.name,
+                s_date : Event.s_date,
+                end_date : Event.end_date,
+                place_map : Event.place_map,
+                adress : Event.adress,
+                wilaya : Event.wilaya,
+                needs : Event.needs,
+            });
+        });
+             
+        } ,
     /**
      * EventController.create()
      */
