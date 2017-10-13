@@ -73,17 +73,6 @@ module.exports = {
           });
         }
         res.render("detail", {
-            title: 'EventDetail',
-            username: Session.username,
-            id: Session._id,
-            company:Session.company,
-            name: Event.name,
-            s_date : Event.s_date,
-            end_date : Event.end_date,
-            place_map : Event.place_map,
-            adress : Event.adress,
-            wilaya : Event.wilaya,
-            title: 'EventDetail',
             username: Session.username,
             id: Session._id,
             company:Session.company,
@@ -94,6 +83,7 @@ module.exports = {
             adress : Event.adress,
             wilaya : Event.wilaya,
             needs : Event.needs,
+            eventDescription : Event.eventDescription,
         });
       });
     } ,
@@ -105,7 +95,16 @@ module.exports = {
      * EventController.create()
      */
     create: function (req, res) {
-        var Event = new EventModel({          name : req.body.name,			s_date : req.body.s_date,			end_date : req.body.end_date,			place_map : req.body.place_map,			adress : req.body.adress,			wilaya : req.body.wilaya,			needs : req.body.needs,			participent : req.body.participent,			pendingParticipents : req.body.pendingParticipents
+        var Event = new EventModel({
+          name : req.body.name,
+			s_date : req.body.s_date,
+			end_date : req.body.end_date,
+			place_map : req.body.place_map,
+			adress : req.body.adress,
+			wilaya : req.body.wilaya,
+			needs : req.body.needs,
+			participent : req.body.participent,
+			pendingParticipents : req.body.pendingParticipents
         });
         Event.publisher = req.user;
 
@@ -138,7 +137,14 @@ module.exports = {
                 });
             }
 
-            Event.s_date = req.body.s_date ? req.body.s_date : Event.s_date;			Event.end_date = req.body.end_date ? req.body.end_date : Event.end_date;			Event.place_map = req.body.place_map ? req.body.place_map : Event.place_map;			Event.adress = req.body.adress ? req.body.adress : Event.adress;			Event.wilaya = req.body.wilaya ? req.body.wilaya : Event.wilaya;			Event.needs = req.body.needs ? req.body.needs : Event.needs;			Event.participent = req.body.participent ? req.body.participent : Event.participent;			Event.pendingParticipents = req.body.pendingParticipents ? req.body.pendingParticipents : Event.pendingParticipents;
+            Event.s_date = req.body.s_date ? req.body.s_date : Event.s_date;
+			Event.end_date = req.body.end_date ? req.body.end_date : Event.end_date;
+			Event.place_map = req.body.place_map ? req.body.place_map : Event.place_map;
+			Event.adress = req.body.adress ? req.body.adress : Event.adress;
+			Event.wilaya = req.body.wilaya ? req.body.wilaya : Event.wilaya;
+			Event.needs = req.body.needs ? req.body.needs : Event.needs;
+			Event.participent = req.body.participent ? req.body.participent : Event.participent;
+			Event.pendingParticipents = req.body.pendingParticipents ? req.body.pendingParticipents : Event.pendingParticipents;
             Event.save(function (err, Event) {
                 if (err) {
                     return res.status(500).json({
@@ -182,4 +188,17 @@ module.exports = {
         return res.json(events);
       })
     },
+
+    getEvent: function(req, res) {
+        var uid = req.params
+        EventModel.findOne({uid : uid}, function(err, Events){
+        if (err) {
+            return res.status(500).json({
+                message: 'Error when deleting the Event.',
+                error: err
+            });
+        }
+        return res.json(Event);
+      })
+    }
 };
