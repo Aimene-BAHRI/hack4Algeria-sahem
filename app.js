@@ -102,6 +102,7 @@ app.use(function(req, res, next){
 app.use('/', index);
 app.use('/users', users);
 app.use('/society', society);
+app.use('/events', events);
 app.use('/api/users', userAPI);
 
 // catch 404 and forward to error handler
