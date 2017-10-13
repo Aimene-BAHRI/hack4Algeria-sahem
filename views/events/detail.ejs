@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <title><%= title %></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body{ padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="col-sm-7">
+        <h1><%= name%></h1>
+        <h2><%= publishing%></h2>
+        <span><%= s_date%></span>  <span><%= end_date%></span>   
+        <div><%= adress%></div>
+        <div><%= eventDescription%></div>
+
+
+	'wilaya' : String,
+	'needs' : Array,
+	'participent' : [{
+	 	type: Schema.Types.ObjectId,
+	 	ref: 'pending'
+	}],
+	'pendingParticipents' : [{
+	 	type: Schema.Types.ObjectId,
+	 	ref: 'pending'
+	}]
+    </div>
+    <div class="col-sm-5">
+        <div id="map"><%= place_map%></div>
+        <div><%= wilaya%></div>
+        <% %>
+            
+        <% %>
+        <div><%= needs%></div>
+    </div>
+
+</div>
+</body>
+</html>

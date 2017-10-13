@@ -10,8 +10,8 @@ router.get('/', EventController.listAllEvents);
 /*
  * GET
  */
-router.get('/:id', EventController.show);
-
+router.get('/:uid', EventController.showDetails);
+    
 /*
  * POST
  */
