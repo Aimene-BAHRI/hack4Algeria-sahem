@@ -1,5 +1,6 @@
-var EventModel = require('../models/EventModel.js');
-
+var Event = require('../models/EventModel.js');
+var EventModel=Event.EventModel
+var Search=Event.searchEngine
 /**
  * EventController.js
  *
@@ -52,6 +53,30 @@ module.exports = {
             return res.json(Event);
         });
     },
+/** get from searchEngine
+ * */
+    searchEngine: function (req, res) {
+        var input = req.body.input;
+    console.log(req.body)
+
+    //Search(input)
+
+    EventModel.findOne({_id: id}, function (err, Event) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error when getting Event.',
+                    error: err
+                });
+            }
+            if (!Event) {
+                return res.status(404).json({
+                    message: 'No such Event'
+                });
+            }
+            return res.json(Event);
+        });
+    },
+
 
     /**
      * EventController.create()

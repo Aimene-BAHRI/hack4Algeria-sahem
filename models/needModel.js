@@ -6,7 +6,7 @@ var Schema=mongoose.Schema;
 
 var NeedSchema= Schema({
     'humensNeed':Number,
-    'materialsNeed':Number,
+    'materialsNeed':String,
     'descriptionNeed':String
 })
 var ModelNeed=mongoose.model('need',NeedSchema);
