@@ -97,6 +97,7 @@ module.exports = {
 			place_map : req.body.place_map,
 			adress : req.body.adress,
 			wilaya : req.body.wilaya,
+            eventDescription:req.body.eventDescription,
 			needs : req.body.needs,
 			participent : req.body.participent,
 			pendingParticipents : req.body.pendingParticipents
