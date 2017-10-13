@@ -16,7 +16,7 @@ router.post('/create', EventController.create);
 /*
  * GET
  */
-// router.get('/:uid', EventController.showDetails);
+router.get('/:uid', EventController.showDetails);
 
 /*
  * POST
