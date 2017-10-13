@@ -93,11 +93,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 * */
 app.use(helmet());
 
-app.use(csrf());
-app.use(function(req, res, next){
- res.locals.csrftoken = req.csrfToken();
- next();
-});
+// app.use(csrf());
+// app.use(function(req, res, next){
+//  res.locals.csrftoken = req.csrfToken();
+//  next();
+// });
 
 app.use('/', index);
 app.use('/users', users);
