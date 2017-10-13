@@ -5,7 +5,7 @@ mongoose.connect('mongodb://localhost:27017/hackforalgeria');
 
 var EventSchema = new Schema({
 	'publisher':{type: Schema.Types.ObjectId},
-	'name': String,
+	'name': {type:String,es_index:true},
 	'uuid': Date.now(),
 	's_date' : Date,
 	'end_date' : Date,
@@ -22,7 +22,11 @@ var EventSchema = new Schema({
 	'pendingParticipents' : [{
 	 	type: Schema.Types.ObjectId,
 	 	ref: 'users'
-	}]
+	}],
+	'needId':{type:Schema.type.ObjectId, ref:'needs'}
+
+
+
 });
 
 

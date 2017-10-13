@@ -4,6 +4,11 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
-var needSchema= Schema({
-
+var NeedSchema= Schema({
+    'humensNeed':Number,
+    'materialsNeed':Number,
+    'descriptionNeed':String
 })
+var ModelNeed=mongoose.model('need',NeedSchema);
+
+module.exports=ModelNeed;
