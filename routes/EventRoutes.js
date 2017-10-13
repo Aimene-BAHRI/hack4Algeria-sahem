@@ -7,11 +7,17 @@ var EventController = require('../controllers/EventController.js');
  */
 router.get('/', EventController.listAllEvents);
 
+/**
+  * Create event
+  */
+router.get('/create', EventController.getCreatePage);
+router.post('/create', EventController.create);
+
 /*
  * GET
  */
-router.get('/:uid', EventController.showDetails);
-    
+// router.get('/:uid', EventController.showDetails);
+
 /*
  * POST
  */

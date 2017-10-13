@@ -6,7 +6,7 @@ mongoose.connect('mongodb://localhost:27017/hackforalgeria');
 var EventSchema = new Schema({
 	'publisher':{type: Schema.Types.ObjectId},
 	'name': String,
-	'uuid': Date.now(),
+	'uid': {type: String, default: Date.now()},
 	's_date' : Date,
 	'end_date' : Date,
 	'place_map' : String,
