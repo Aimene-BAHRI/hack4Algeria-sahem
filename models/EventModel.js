@@ -77,8 +77,6 @@ e1.premiumDegree=1;
 
 })
 */
-
-
 function searchEngine(input,calback){
 
 	EventModel.search({
