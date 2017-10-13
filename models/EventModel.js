@@ -8,6 +8,7 @@ var EventSchema = new Schema({
 	'place_map' : String,
 	'adress' : String,
 	'wilaya' : String,
+	'founding': {type : Number, default : 0},
 	'needs' : Array,
 	'participent' : [{
 	 	type: Schema.Types.ObjectId,
