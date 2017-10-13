@@ -8,7 +8,7 @@ var EventModel = require('../models/EventModel.js');
 module.exports = {
 
     /**
-     * EventController.list()
+     * EventController.list() for API
      */
     list: function (req, res) {
         EventModel.find(function (err, Events) {
@@ -21,7 +21,17 @@ module.exports = {
             return res.json(Events);
         });
     },
-
+    listAllEvents: function (req, res){
+      EventModel.find(function(err, Events){
+        if (err) {
+            return res.status(500).json({
+                message: 'Error when getting Event.',
+                error: err
+            });
+        }
+        return res.render('events/list', {title: 'Events', events: Events});
+      });
+    },
     /**
      * EventController.show()
      */

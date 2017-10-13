@@ -5,7 +5,7 @@ var EventController = require('../controllers/EventController.js');
 /*
  * GET
  */
-router.get('/', EventController.list);
+router.get('/', EventController.listAllEvents);
 
 /*
  * GET
