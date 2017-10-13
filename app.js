@@ -32,7 +32,7 @@ app.set('view engine', 'ejs');
 
 // Database and passport setup
 mongoose.Promise = global.Promise; //For hiding the "deprecated" warning
-mongoose.connect(configDB.url,function(err, next) {
+mongoose.createConnection(configDB.url,function(err, next) {
   if (err) {
     console.error("Faild to load DB");
   } else {
