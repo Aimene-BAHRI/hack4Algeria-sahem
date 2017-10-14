@@ -2,6 +2,7 @@ var Event = require('../models/EventModel.js');
 var EventModel=Event.EventModel
 var Search=Event.searchEngine;
 var Category = require('../models/categoryModel');
+var UserModel = require('../models/UserModel.js');
 /**
  * EventController.js
  *
@@ -91,8 +92,10 @@ module.exports = {
      * EventController.showDetails()
      */
     showDetails : function (req, res){
-        var id = req.params.id;
-        EventModel.findOne({_id: id}, function (err, Event) {
+        var uid = req.params.uid;
+        var userId = req.query.rel;
+
+        EventModel.findOne({uid: uid}, function (err, Event) {
           if (err) {
               return res.status(500).json({
                 message: 'Error when getting Event.',
@@ -100,25 +103,63 @@ module.exports = {
           });
         }
         if (!Event) {
-          return res.status(404).json({
-              message: 'No such Event'
-          });
+          return res.redirect('/events');
         }
-        res.render("detail", {
-            username: Session.username,
-            id: Session._id,
-            company:Session.company,
-            name: Event.name,
-            s_date : Event.s_date,
-            end_date : Event.end_date,
-            place_map : Event.place_map,
-            adress : Event.adress,
-            wilaya : Event.wilaya,
-            needs : Event.needs,
-            eventDescription : Event.eventDescription,
+        UserModel.findOne({_id: Event.publisher}, function(err, publisher){
+          if (err) {
+            console.error(err);
+          }
+
+          if (typeof userId === 'undefined' || userId === null || userId === "") {
+            return res.render("events/detail", {
+                name: Event.name,
+                s_date : Event.s_date,
+                end_date : Event.end_date,
+                place_map : Event.place_map,
+                adress : Event.adress,
+                wilaya : Event.wilaya,
+                needs : Event.needs,
+                eventDescription : Event.eventDescription,
+                publisher: publisher,
+                needs: Event.needs,
+                participent: Event.participent,
+            });
+          }
+
+          UserModel.findOne({_id: userId}, function(err, User){
+            if (err) {
+                return res.status(500).json({
+                  message: 'Error when getting Event.',
+                  error: err
+                });
+            }
+            User.reputation += 0.1;
+            User.save(function(err, User){
+              if (err) {
+                  return res.status(500).json({
+                    message: 'Error when getting Event.',
+                    error: err
+                });
+              }
+              res.render("events/detail", {
+                  name: Event.name,
+                  s_date : Event.s_date,
+                  end_date : Event.end_date,
+                  place_map : Event.place_map,
+                  adress : Event.adress,
+                  wilaya : Event.wilaya,
+                  needs : Event.needs,
+                  eventDescription : Event.eventDescription,
+                  publisher: publisher,
+                  needs: Event.needs,
+                  participent: Event.participent,
+              });
+            });
+          });
         });
-      });
-    } ,
+         //
+        });
+    },
     getCreatePage: function(req, res){
       return res.render('events/create')
     },
@@ -148,7 +189,7 @@ module.exports = {
                     error: err
                 });
             }
-            return res.status(201).json(Event);
+            return res.redirect('/events');
         });
     },
 
