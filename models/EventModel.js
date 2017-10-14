@@ -1,14 +1,12 @@
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 var mongoosastic = require('mongoosastic');
+var config = require('../config/database');
 
 var elasticsearch = require('elasticsearch');
 //var EventModel=require('./EventModel');
 
-mongoose.connect('mongodb://localhost:27017/test33');
-
-
-var esClient = new elasticsearch.Client({host: 'localhost:9200'});
+var esClient = new elasticsearch.Client({host: "https://01d0571e.ngrok.io"});
 
 function eventObject(evtObj) {
 
@@ -27,7 +25,7 @@ function eventObject(evtObj) {
 var EventSchema = new Schema({
 	'publisher':{type: Schema.Types.ObjectId},
 	'name': {type:String,es_index:true},
-	'uuid': {type: Date, default: Date.now(), unique:true},
+	'uid': {type: Number, default: Date.now(), unique:true},
 	's_date' :{type: String, default: "00/00/00"},
 	'end_date' :{type: String, default: "00/00/00"},
 	'place_map' : {type:String,default :null},

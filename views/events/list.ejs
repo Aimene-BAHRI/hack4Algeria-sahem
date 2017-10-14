@@ -96,21 +96,26 @@
                 </ul>
             </div>
                 </div><br>
+
+
                 <div class="col-lg-9">
-               <div style="width:95%;" class="container">
+                    <%if (typeof events != 'undefined') {%>
+                 <%for (var i = 0; i < events.length; i++) {%>
+                <div class="col-lg-12">
+                <div style="width:95%;" class="container">
                 <div class="panel price">
                 <div class="panel-heading">
                   <div class="row">
 
-                    <%if (typeof events != 'undefined') {%>
+
                      <div class="col-lg-12">
-                             <%for (var i = 0; i < events.length; i++) {%>
-                               <section>
+
+
                                <div class="col-lg-12">
                                    <h2><a href="<%= '/events/' + events[i].uid %>"><%= events[i].name %></a></h2>
                                    <p>Description Description Description Description Description Description Description Description Description Description Description Description </p>
                               </div>
-  
+
                                <div class="col-lg-4">
                                    <%= events[i].s_date %> <span class="green">-</span> <%= events[i].end_date %>
                               </div>
@@ -118,32 +123,23 @@
                                <div class="col-lg-4">
                                    <%= events[i].adress %>
                               </div>
-                            </section>
-                             <%}%>
+
+
                     </div>
-                    <%}%>
+
                     </div>
+
                     </div>
                    </div>
 
                </div>
-
-
                 </div>
+                   <%}%>
+                    <%}%>
+                </div>
+
             </div>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
       <script>
 
       var map = L.map('mapid').setView([51.505, -0.09], 13);
@@ -155,6 +151,9 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 L.marker([51.5, -0.09]).addTo(map)
     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     .openPopup();
+    L.Icon({
+      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png'
+    })
       </script>
     </body>
 </html>
