@@ -233,5 +233,58 @@ module.exports = {
         }
         return res.json(Event);
       })
-    }
+    }, 
+
+    getMarkers: function  (req, res) {
+        res.json({
+            "locations":[
+                {
+                    "place_name": "Sylabs",
+                    "type": "Talent Accelerator",
+                    "coord": {
+                        "lat": 36.774423,
+                        "lon": 3.060445
+                    },
+                    "is_premium":{type:Boolean, value:true}
+                },
+                {
+                    "place_name": "WeltInfo",
+                    "type": "Store",
+                    "coord": {
+                        "lat": 36.774285,
+                        "lon": 3.059576
+                    },
+                    "is_premium":{type:Boolean, value:false}
+                },
+                {
+                    "place_name": "Mahieddin Bachtarzi",
+                    "type": "Teatre",
+                    "coord": {
+                        "lat": 36.781205, 
+                        "lon": 3.060125
+                    },
+                    "is_premium":{type:Boolean, value:false}
+                },
+                {
+                    "place_name": "Ketchaoua",
+                    "type": "Mosque",
+                    "coord": {
+                        "lat": 36.784905, 
+                        "lon": 3.060895
+                    },
+                    "is_premium":{type:Boolean, value:false}
+                },
+                {
+            "place_name": "Beni Messous",
+            "type": "Millitary zone ",
+            "coord": {
+                "lat": 36.773841,
+                "lon": 2.989938
+            },
+                    "is_premium":{type:Boolean, value:false}
+        } 
+
+            ]
+        })
+            }
 };

@@ -140,20 +140,45 @@
 
             </div>
           </div>
+      <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
       <script>
-
-      var map = L.map('mapid').setView([51.505, -0.09], 13);
-
+        var Data ;
+          $.get('http://localhost:5555/api/events/markers', function (data) {
+            console.log(data);
+            console.log(data.locations.length)
+            positions = data.locations;
+            
+            var map = L.map('mapid').setView([36.774423,3.060445], 13);
+            var array = [];
+            for (i = 0; i < positions.length; i++) { 
+              array.push([positions[i].coord.lat, positions[i].coord.lon])
+            }
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
-    L.Icon({
-      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png'
-    })
+    for (i = 0; i < positions.length; i++) { 
+      if(positions[i].is_premium == true) {
+          L.marker([positions[i].coord.lat, positions[i].coord.lon]).addTo(map)
+      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+      .openPopup();
+      }
+       else{L.marker([positions[i].coord.lat, positions[i].coord.lon]).addTo(map)}   
+    }
+    map.fitBounds(array);
+          });
+    
+        
+        
+      
       </script>
+     
     </body>
 </html>

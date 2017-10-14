@@ -7,6 +7,6 @@ var EventController = require('../controllers/EventController.js');
  */
 router.get('/latest', EventController.getLatestEvents);
 router.get('/get/:uid', EventController.getEvent);
-
+router.get('/markers', EventController.getMarkers);
 
 module.exports = router;
