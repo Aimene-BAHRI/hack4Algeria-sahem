@@ -7,6 +7,16 @@ var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var csrf = require('csurf');
 
+
+
+
+
+//
+// var algoliasearch = require('algoliasearch/reactnative');
+// var algoliasearch = require('algoliasearch/lite');
+// import algoliasearch from 'algoliasearch';
+
+
 // Load routes
 var index = require('./routes/index');
 var users = require('./routes/UserRoutes');
@@ -42,7 +52,7 @@ mongoose.createConnection(configDB.url,function(err, next) {
   }
 });
 
-// If the connection throws an error
+//If the connection throws an error
 mongoose.connection.on('error',function (err) {
   console.log('Mongoose connection Warning: error: ' + err);
 });

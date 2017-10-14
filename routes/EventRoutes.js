@@ -23,6 +23,11 @@ router.get('/:uid', EventController.showDetails);
  */
 router.post('/', EventController.create);
 
+/*POST
+ *
+ * */
+router.post('/', EventController.searchEngine);
+
 /*
  * PUT
  */
