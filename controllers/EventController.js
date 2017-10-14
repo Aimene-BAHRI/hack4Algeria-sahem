@@ -128,11 +128,8 @@ module.exports = {
           }
 
           UserModel.findOne({_id: userId}, function(err, User){
-            if (err) {
-                return res.status(500).json({
-                  message: 'Error when getting Event.',
-                  error: err
-                });
+            if (err || !User) {
+              return res.redirect('/events/'+Event.uid);
             }
             User.reputation += 0.1;
             User.save(function(err, User){

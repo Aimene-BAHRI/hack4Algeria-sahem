@@ -227,7 +227,11 @@ L.marker([51.5, -0.09]).addTo(map)
       </script>
       <script type="text/javascript">
       var currentURL = window.location;
+      <% if (typeof user === 'undefined'){%>
+      var userID = "";
+      <% } else{ %>
       var userID = "<%= user._id %>";
+      <%}%>
       var referealLink = userID.length > 0 ? currentURL + "?rel=" + userID : currentURL;
 
     $("#twitter").html("<a href='https://twitter.com/intent/tweet?url="+ referealLink +"&text=" + document.title + "' target='_blank'><i class='fa fa-twitter-square social-icons' aria-hidden='true'></i></a>")
