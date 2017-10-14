@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+
+    <title></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- Fonts from Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+   crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+   crossorigin=""></script>
+      
+      
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><b>Sahim</b></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a data-toggle="modal" data-target="#myModal" href="#">Create Event</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <section class="profile">
+        <div class="row">
+            <div  class="col-lg-4">
+                
+        <div style="width:90%;margin-left:8%;margin-top:100px;" class="panel panel-success  price">
+                <div id="mapid" class="panel-heading">
+                    <div class="maping-details"></div>
+                </div>
+                
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><br><p><b>Publisher :</b>  <%=name %></p><p><b>Start Date : </b>b><%=s_date %></p><p><b>End Date :</b> <%=end_date %></p>
+                 
+                   
+                    <table style="width:100%;" class="table table-bordered">
+  
+    <tbody>
+      <tr>
+        <td style="width:50%;text-align:center;"><%=participent %><br> Personne</td>
+        <td style="width:50%;text-align:center;"><%=needs %><br> Tools</td>
+      </tr>
+    </tbody>
+  </table>
+                        <p><b>Address :</b> <%= adress %></p>
+                        
+                      </li>
+                   
+                </ul>
+            </div>
+            </div>
+            
+                <div class="col-lg-8">
+                    <h1 style="height:0px;">Event title : <%= name %></h1>
+        
+                     <div style="width:95%;" class="container">
+                <div class="panel price">
+                <div class="panel-heading">
+                  <div class="row">
+
+                     <div class="col-lg-12">
+                         
+                          <div class="col-lg-12">
+                              <h2><a href="">Description :</a></h2>
+                              <p><%= eventDescription %></p>
+                              <h4>Humain Resource Needed</h4>
+                               <table class="table">
+                                    <thead>
+                                    
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:80%;"><%= eventDescription %> person needed </td>
+                                        <td> <button type="submit" class="btn btn-success btn-lg">Join</button></td>
+                                    </tr>
+                                    
+                                    </tbody>
+                                </table>
+                                            <h4>Tools Needed</h4>                 
+                                    <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Tool</th>
+                                        <th>Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:40%;"> Bala</td>
+                                        <td style="width:40%;"> 12 </td>
+                                        <td> <button type="submit" class="btn btn-success btn-lg">Give</button></td>
+                                    </tr>
+                                        <tr>
+                                        <td style="width:40%;"> Chairs</td>
+                                            <td style="width:40%;"> 16 </td>
+                                        <td> <button type="submit" class="btn btn-success btn-lg">Give</button></td>
+                                    </tr>
+                                    
+                                    </tbody>
+                                </table>
+                              <center>
+                              <h4>Your Unique Link</h4>
+                              <div class="form-group">
+					    <input style="width:80%;" onClick="this.select();" type="email" class="form-control" id="exampleInputEmail1" value="http://example.com">
+					  </div>
+                              <div class="social">
+                                  <h4>Share the link on </h4>
+                              <a class="btn facebook" href="#">Facebook</a>
+                              <a class="btn twitter" href="#">Twitter</a>
+                            
+                                 </div>
+                                  </center>
+                         </div>
+                        
+                    </div>
+                    </div>
+                    </div>
+                   </div>
+                   
+               </div>
+        </div>
+        
+        </div>
+      
+      </section>
+    
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+     <div class="row">
+            <div  class="col-lg-12">
+                <div  class="col-lg-12">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+            
+            <form type="" action="" >
+         <div class="form-group">
+  <label for="usr">Event Name:</label>
+  <input type="text" class="form-control" id="usr">
+</div>
+<div class="form-group">
+  <label for="pwd">Event human needed:</label>
+  <input type="number" class="form-control" id="pwd">
+</div>
+            <div class="form-group">
+  <label for="usr">Materials Needed:</label>
+ <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
+<div class="form-group">
+  <label for="pwd">Date:</label>
+  <input type="date" class="form-control" id="pwd">
+</div>
+                 <button type="submit" class="btn btn-info btn-lg">Create an event</button>
+      </form>      
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+      </div>
+     <script>
+      
+      var map = L.map('mapid').setView([51.505, -0.09], 13);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .openPopup();
+      </script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

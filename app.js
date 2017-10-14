@@ -22,6 +22,7 @@ var index = require('./routes/index');
 var users = require('./routes/UserRoutes');
 var userAPI = require('./routes/UserAPI');
 var events = require('./routes/EventRoutes');
+var eventsAPI = require('./routes/EventAPIRoutes');
 var society = require('./routes/SocietyRoutes');
 
 var app = express();
@@ -42,7 +43,7 @@ app.set('view engine', 'ejs');
 
 // Database and passport setup
 mongoose.Promise = global.Promise; //For hiding the "deprecated" warning
-mongoose.connect(configDB.url, function(err, next) {
+mongoose.createConnection(configDB.url,function(err, next) {
   if (err) {
     console.error("Faild to load DB");
   } else {
@@ -114,6 +115,7 @@ app.use('/users', users);
 app.use('/society', society);
 app.use('/events', events);
 app.use('/api/users', userAPI);
+app.use('/api/events', eventsAPI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
