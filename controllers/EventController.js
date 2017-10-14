@@ -1,6 +1,7 @@
 var Event = require('../models/EventModel.js');
 var EventModel=Event.EventModel
-var Search=Event.searchEngine
+var Search=Event.searchEngine;
+var Category = require('../models/categoryModel');
 /**
  * EventController.js
  *
@@ -23,16 +24,21 @@ module.exports = {
         });
     },
     listAllEvents: function (req, res){
-      EventModel.find(function(err, Events){
-        if (err) {
-            return res.status(500).json({
-                message: 'Error when getting Event.',
-                error: err
-            });
-        }
+        //TODO get all categories this function as callback
+        Category.find(function (err, Categories) {
+            /*err*/
+            EventModel.find(function(err, Events){
+                if (err) {
+                    return res.status(500).json({
+                        message: 'Error when getting Event.',
+                        error: err
+                    });
+                }
 
-        return res.render('events/list', {events: Events});
-      });
+                return res.render('events/list', {events: Events, categories: Categories});
+            });
+        })
+
     },
     /**
      * EventController.show()
