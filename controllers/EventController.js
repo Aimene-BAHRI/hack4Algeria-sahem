@@ -211,12 +211,12 @@ module.exports = {
         }
         var events = Events.slice(0, 9);
         return res.json(events);
-      })
+      });
     },
 
     getEvent: function(req, res) {
-        var uid = req.params
-        EventModel.findOne({uid : uid}, function(err, Events){
+        var uid = req.params.uid;
+        EventModel.findOne({uid : uid}, function(err, Event){
         if (err) {
             return res.status(500).json({
                 message: 'Error when deleting the Event.',
