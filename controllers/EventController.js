@@ -123,6 +123,7 @@ module.exports = {
                 publisher: publisher,
                 needs: Event.needs,
                 participent: Event.participent,
+                user: req.user,
             });
           }
 
@@ -153,6 +154,7 @@ module.exports = {
                   publisher: publisher,
                   needs: Event.needs,
                   participent: Event.participent,
+                  user: req.user,
               });
             });
           });
