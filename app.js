@@ -7,15 +7,8 @@ var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var csrf = require('csurf');
 
-
-
-
-
-//
-// var algoliasearch = require('algoliasearch/reactnative');
-// var algoliasearch = require('algoliasearch/lite');
-// import algoliasearch from 'algoliasearch';
-
+// Load .env file
+require('dotenv').config();
 
 // Load routes
 var index = require('./routes/index');
@@ -26,9 +19,6 @@ var eventsAPI = require('./routes/EventAPIRoutes');
 var society = require('./routes/SocietyRoutes');
 
 var app = express();
-
-// Load .env file
-require('dotenv').config();
 
 var passport = require('passport');
 var session = require('express-session');
