@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var EventController = require('../controllers/EventController.js');
+var helper = require('./helperFunctions');
 
 /*
  * GET
@@ -10,8 +11,8 @@ router.get('/', EventController.listAllEvents);
 /**
   * Create event
   */
-router.get('/create', EventController.getCreatePage);
-router.post('/create', EventController.create);
+router.get('/create', helper.isLoggedIn, EventController.getCreatePage);
+router.post('/create', helper.isLoggedIn, EventController.create);
 
 /*
  * GET

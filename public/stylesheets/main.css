@@ -2,7 +2,7 @@
 
 body {
   background-color: #f4f4f4;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 16px;
     color: #555;
@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	font-size: 40px;
-    margin: 10%;
+    margin: 5%;
 }
 h2{
     font-weight: 500;
@@ -292,6 +292,26 @@ form[role=login] {
     z-index:999 !important;
     position: relative;
 }
-#headerwrap .form-group input{
+.mdl-ct{
+    width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.maping-details{
+    height: 300px;
+    width: 100%;
+}
+.socials{
+   display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
     
+}
+.facebook{
+ background-color: #1D1FA7;
+ color: #fff;
+}
+.twitter{
+ background-color: #539EF8;
+ color: #fff;
 }

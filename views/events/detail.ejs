@@ -8,13 +8,13 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/img/favicon.png">
 
-    <title></title>
+    <title>Event detail</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="/stylesheets/main.css" rel="stylesheet">
 
     <!-- Fonts from Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
@@ -24,9 +24,9 @@
       <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
    crossorigin=""></script>
-      
-      
-    
+
+
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -56,20 +56,23 @@
     </div>
 
     <section class="profile">
-        <div class="row">
+        <div class="">
             <div  class="col-lg-4">
-                
+
         <div style="width:90%;margin-left:8%;margin-top:100px;" class="panel panel-success  price">
                 <div id="mapid" class="panel-heading">
                     <div class="maping-details"></div>
                 </div>
-                
+
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><br><p><b>Publisher :</b><%=publisher %></p><p><b>Start Date : </b>b><%=s_date %></p><p><b>End Date :</b> <%=end_date %></p>
-                 
-                   
+                  <% if (typeof publisher !== 'undefined' && publisher !== null) { %>
+                    <li class="list-group-item"><br><p><b>Publisher: </b><%= publisher.profile.name %></p><p><b>Start Date : </b>b><%=s_date %></p><p><b>End Date :</b> <%=end_date %></p>
+                  <%}else{%>
+                    <li class="list-group-item"><br><p><b>Publisher:</b> Annonymous</p><p><b>Start Date : </b>b><%=s_date %></p><p><b>End Date :</b> <%=end_date %></p>
+                    <%}%>
+
                     <table style="width:100%;" class="table table-bordered">
-  
+
     <tbody>
       <tr>
         <td style="width:50%;text-align:center;"><%=participent %><br> Personne</td>
@@ -78,40 +81,40 @@
     </tbody>
   </table>
                         <p><b>Address :</b> <%= adress %></p>
-                        
+
                       </li>
-                   
+
                 </ul>
             </div>
             </div>
-            
+
                 <div class="col-lg-8">
-                    <h1 style="height:0px;">Event title : <%= name %></h1>
-        
-                     <div style="width:95%;" class="container">
+
+                     <div style="width:95%;padding-top:80px;" class="container">
                 <div class="panel price">
                 <div class="panel-heading">
                   <div class="row">
 
                      <div class="col-lg-12">
-                         
+
                           <div class="col-lg-12">
+                            <h1 class="h2"><%= name %></h1>
                               <h2><a href="">Description :</a></h2>
                               <p><%= eventDescription %></p>
                               <h4>Humain Resource Needed</h4>
                                <table class="table">
                                     <thead>
-                                    
+
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td style="width:80%;"><%= eventDescription %> person needed </td>
                                         <td> <button type="submit" class="btn btn-success btn-lg">Join</button></td>
                                     </tr>
-                                    
+
                                     </tbody>
                                 </table>
-                                            <h4>Tools Needed</h4>                 
+                                            <h4>Tools Needed</h4>
                                     <table class="table">
                                     <thead>
                                     <tr>
@@ -131,35 +134,35 @@
                                             <td style="width:40%;"> 16 </td>
                                         <td> <button type="submit" class="btn btn-success btn-lg">Give</button></td>
                                     </tr>
-                                    
+
                                     </tbody>
                                 </table>
                               <center>
-                              <h4>Your Unique Link</h4>
+                              <h4>Share this event !</h4>
                               <div class="form-group">
-					    <input style="width:80%;" onClick="this.select();" type="email" class="form-control" id="exampleInputEmail1" value="http://example.com">
+					    <input style="width:80%;" onClick="this.select();" type="email" class="form-control" id="exampleInputEmail1">
 					  </div>
                               <div class="social">
                                   <h4>Share the link on </h4>
                               <a class="btn facebook" href="#">Facebook</a>
                               <a class="btn twitter" href="#">Twitter</a>
-                            
+
                                  </div>
                                   </center>
                          </div>
-                        
+
                     </div>
                     </div>
                     </div>
                    </div>
-                   
+
                </div>
         </div>
-        
+
         </div>
-      
+
       </section>
-    
+
 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -173,7 +176,7 @@
           <h4 class="modal-title">Modal Header</h4>
         </div>
         <div class="modal-body">
-            
+
             <form type="" action="" >
          <div class="form-group">
   <label for="usr">Event Name:</label>
@@ -192,21 +195,26 @@
   <input type="date" class="form-control" id="pwd">
 </div>
                  <button type="submit" class="btn btn-info btn-lg">Create an event</button>
-      </form>      
-            
+      </form>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
+
     </div>
   </div>
-  
+
 </div>
       </div>
-     <script>
-      
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+         <script>
+
       var map = L.map('mapid').setView([51.505, -0.09], 13);
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -217,10 +225,18 @@ L.marker([51.5, -0.09]).addTo(map)
     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     .openPopup();
       </script>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+      var currentURL = window.location;
+      <% if (typeof user === 'undefined'){%>
+      var userID = "";
+      <% } else{ %>
+      var userID = "<%= user._id %>";
+      <%}%>
+      var referealLink = userID.length > 0 ? currentURL + "?rel=" + userID : currentURL;
+
+    $("#twitter").html("<a href='https://twitter.com/intent/tweet?url="+ referealLink +"&text=" + document.title + "' target='_blank'><i class='fa fa-twitter-square social-icons' aria-hidden='true'></i></a>")
+    $("#facebook").html("<a href='https://www.facebook.com/sharer/sharer.php?u="+ referealLink + "' target='_blank'><i class='fa fa-facebook-square social-icons' aria-hidden='true'></i></a>")
+    $("#exampleInputEmail1").val(referealLink);
+      </script>
   </body>
 </html>

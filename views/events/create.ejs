@@ -1,9 +1,12 @@
 <!doctype html>
 <html>
 <head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create a new event</title>
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
 
   <!-- Custom styles for this template -->
   <link href="/stylesheets/main.css" rel="stylesheet">
@@ -34,7 +37,6 @@
 </head>
 
 <body>
-
   <!-- Fixed navbar -->
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -56,16 +58,18 @@
 <div class="container">
 
 <div class="col-sm-6 col-sm-offset-3">
-
-    <h1><span class="fa fa-sign-in"></span> Create</h1>
+  <div class="row">
+        
+    <h1 style="padding-top:30px;height:20px;padding-bottom:30px;"><span class="fa fa-sign-in"></span> Create</h1>
 
     <!-- show any messages that come back with authentication -->
     <% if (typeof message !== 'undefined' && message.length > 0) {%>
         <div class="alert alert-danger"><%= message %></div>
     <% } %>
 
+
     <!-- CREATE FORM -->
-    <form action="/events/create" method="post">
+    <form style=" background-color: #fff;padding: 40px;border-radius: 10px;margin-bottom:40px;" action="/events/create" method="post">
         <div class="form-group">
             <label>Name</label>
             <input type="text" class="form-control" name="name">
@@ -92,7 +96,7 @@
 
 
 </div>
-
+        </div>
 </div>
 </body>
 </html>
