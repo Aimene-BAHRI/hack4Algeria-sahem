@@ -56,8 +56,9 @@ module.exports = {
 /** get from searchEngine
  * */
     searchEngine: function (req, res) {
-        var input = req.body.input;
-    console.log(req.body)
+        var input = req.body.query;
+
+        console.log(req.body)
 
     //Search(input)
 
@@ -82,6 +83,7 @@ module.exports = {
      * EventController.create()
      */
     create: function (req, res) {
+        console.log(req.body)
         var Event = new EventModel({
 			s_date : req.body.s_date,
 			end_date : req.body.end_date,

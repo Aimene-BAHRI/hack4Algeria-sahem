@@ -17,6 +17,11 @@ router.get('/:id', EventController.show);
  */
 router.post('/', EventController.create);
 
+/*POST
+ *
+ * */
+router.post('/', EventController.searchEngine);
+
 /*
  * PUT
  */
