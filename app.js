@@ -7,6 +7,16 @@ var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var csrf = require('csurf');
 
+
+
+
+
+//
+// var algoliasearch = require('algoliasearch/reactnative');
+// var algoliasearch = require('algoliasearch/lite');
+// import algoliasearch from 'algoliasearch';
+
+
 // Load routes
 var index = require('./routes/index');
 var users = require('./routes/UserRoutes');
@@ -32,7 +42,7 @@ app.set('view engine', 'ejs');
 
 // Database and passport setup
 mongoose.Promise = global.Promise; //For hiding the "deprecated" warning
-mongoose.connect(configDB.url,function(err, next) {
+mongoose.connect(configDB.url, function(err, next) {
   if (err) {
     console.error("Faild to load DB");
   } else {
@@ -41,7 +51,7 @@ mongoose.connect(configDB.url,function(err, next) {
   }
 });
 
-// If the connection throws an error
+//If the connection throws an error
 mongoose.connection.on('error',function (err) {
   console.log('Mongoose connection Warning: error: ' + err);
 });
