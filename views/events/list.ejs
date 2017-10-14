@@ -87,11 +87,12 @@
                 </div>
 
                 <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                     <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                     <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
+                    <%if (typeof categories != 'undefined') {%>
+                        <% for (var i=0; i< categories.length; i++) {%>
+<li class="list-group-item"><i class="icon-ok text-danger"></i><% categories[i].categoryName %></li>
+                        <%}%>
+                    <%}%>
+
                 </ul>
             </div>
                 </div><br>
@@ -139,18 +140,6 @@
 
             </div>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
       <script>
 
       var map = L.map('mapid').setView([51.505, -0.09], 13);

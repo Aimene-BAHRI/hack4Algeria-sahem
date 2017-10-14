@@ -61,10 +61,10 @@ var EventModel=mongoose.model('Event', EventSchema);
 
 
 
-
+/*
 var e1=new EventModel();
 e1.name="bad event";
-e1.premiumDegree=1;
+e1.premiumDegree=1;*/
 //e1.publisher=ObjectId("59e10a240e429239fcc03ca5");
 
 /*e1.save(function (err,suc) {
@@ -97,7 +97,7 @@ function searchEngine(input,calback){
 				renderingEvents.push(evt)
 
 			})
-			return calback(renderingEvents)
+			calback(renderingEvents)
 		}
 
 
@@ -106,9 +106,9 @@ function searchEngine(input,calback){
 
 }
 
-searchEngine("event",function (e) {
+/*searchEngine("event",function (e) {
 	console.log(e)
-})
+})*/
 
 module.exports ={
 
